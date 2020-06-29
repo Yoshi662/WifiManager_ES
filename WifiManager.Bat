@@ -4,6 +4,7 @@ Title CMD WiFi Manager - Yoshi_662
 set SSID="TempWifi"
 set Pass="12345678"
 
+if [%1]==[auto] goto AUTO
 
 echo.
 echo ******************************************************************************
@@ -112,6 +113,11 @@ echo.
 echo. 
 pause
 goto MENU
+
+:AUTO
+netsh wlan start hostednetwork
+ping ::1 -n 2 > NUL
+goto FIN
 
 :FIN
 color && cls
